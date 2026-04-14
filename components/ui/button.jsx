@@ -1,6 +1,6 @@
 import * as React from "react"
 import { cva } from "class-variance-authority";
-import { Slot } from "radix-ui"
+import { Slot } from "@radix-ui/react-slot";
 
 import { cn } from "@/lib/utils"
 
@@ -19,7 +19,10 @@ const buttonVariants = cva(
         destructive:
           "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
         link: "text-primary underline-offset-4 hover:underline",
+        // gold:"bg-amber-400 text-[#0a0a0b] hover:bg-amber-400 hover:-translate-y-0.5 hover:shadow-[0_12px_36px_rgbs(251,191.360,35)]"
+        gold: "bg-amber-400 text-[#0a0a0b] hover:bg-amber-400 hover:-translate-y-0.5 hover:shadow-[0_12px_36px_rgba(251,191,36,0.6)]"
       },
+      
       size: {
         default:
           "h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
@@ -32,6 +35,7 @@ const buttonVariants = cva(
         "icon-sm":
           "size-7 rounded-[min(var(--radius-md),12px)] in-data-[slot=button-group]:rounded-lg",
         "icon-lg": "size-9",
+        hero:"px-6 sm:px-6 py-2 sm:py-3.5 text-base rounded-xl"
       },
     },
     defaultVariants: {
@@ -48,7 +52,7 @@ function Button({
   asChild = false,
   ...props
 }) {
-  const Comp = asChild ? Slot.Root : "button"
+  const Comp = asChild ? Slot : "button"
 
   return (
     <Comp
